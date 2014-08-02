@@ -1,0 +1,376 @@
+@font-face {
+	font-family: 'icomoonForTxtArea';
+	src:url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	/*unicode-range: U+2600-2750;*/
+	font-weight: normal;
+	font-style: normal;
+	
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	
+}
+
+
+
+body {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	font-family: Tahoma, Verdana, sans-serif, icomoon;
+	/*font-family: Tahoma, Verdana, sans-serif, icomoon;*/
+	color: #ccc;
+	background-color: #111;
+	overflow:hidden;
+	overflow-y:auto; 
+	/*webkit-font-smoothing: antialiased;*/
+}
+
+#hiddenBody {
+	position: absolute;
+	min-height: 100%; 
+	top: 0;
+	right: 0;
+	left: 0;  
+	opacity: 0; 
+	background-image:url('background.jpg');
+}
+
+#centerDiv {
+	width: 775px;
+	margin:0 auto;
+	/*background-color: blue; */
+}
+
+
+textarea {
+	autocomplete: off;
+	font-family:  icomoon, Tahoma, Verdana, sans-serif;
+	/*webkit-font-smoothing: antialiased;*/
+}
+
+#messageBox textarea {
+	font-family: Tahoma, icomoon, Verdana, sans-serif;
+}
+
+
+::selection  {
+	background: #4A8CF6;
+	color: white; 
+}
+
+::-moz-selection{
+	background: #4A8CF6;
+	color: white;
+}
+
+
+input:focus, select:focus, textarea:focus {
+	outline:none;
+}
+	
+#title1 {
+	width: 4.40em;
+	/*border: 1px solid red;*/
+	margin: 0 auto;
+	font-size: 500%;
+	cursor:default;
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+#theX {
+	display: inline;
+	
+	
+	
+	/*-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(9deg);
+	-o-transform: rotate(0deg);*/
+	
+}
+
+
+#buttonArea1 {
+	
+	width: 43.5em; /*700px*/
+	height: 1.5em;
+			
+	margin: 0 auto;
+	margin-top: 7px; 
+	text-align: center;	 
+	font-size: 70%; 
+	/*border: 1px solid red;*/
+	
+	padding-left: 1em;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	
+	
+	
+}
+
+#keyBox1, #keyBox2, .keyBox{
+	width: 750px;
+	margin: 0 auto;
+	margin-top: 8px;
+
+	
+}
+
+#keyBox1 textarea, #keyBox2 textarea, .keyBox textarea{
+	width: 750px;
+	height: 95px;
+	margin: 0 auto;
+	border: 2px solid;
+	color: #ccc;
+	background-color: transparent;
+
+	
+	font-size: 1.75em;
+	font-weight: 100;
+	line-height: 1.15em; 
+	letter-spacing: 0em;
+	
+	resize: none; 
+	overflow:hidden;
+	
+	text-align:center;
+	
+	
+	
+}
+
+#inputKeyBoxDefault {
+	position: absolute; 
+	diplay: inline; 
+	/*font-family:  Tahoma, Verdana, sans-serif, icomoon, testfontIE, testfontFF;*/
+	font-size: 30px;
+	line-height: 31px; 
+	letter-spacing: .02em;
+	text-align:center;
+	margin-left: 4em; 
+	margin-top: 1em;
+}
+
+
+
+#messageBox, #messageBoxEReg {
+	width: 753px;
+	margin: 0 auto;
+	border: 2px solid;
+	margin-top: 8px;
+	margin-left: 12px; 
+	overflow: hidden;
+		
+}
+
+
+#messageBox textarea, #messageBoxEReg textarea{
+	width: 750px;
+	height: 475px;
+	margin: 0 auto;
+	color: #ccc;
+	background-color: transparent;
+	font-size: .9em;
+	line-height: 1.1em;
+	letter-spacing: .1em;
+	resize: none; 
+	overflow:hidden;
+	overflow-y:scroll; 
+	border: none;
+	padding-top: 2px;
+	padding-left: 4px;
+	padding-right: 5px; 
+	
+}
+
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+
+
+
+#messageBoxDefault {
+	position: absolute;
+	font-size: 1em;
+	line-height: 1.1em;
+	letter-spacing: .1em;
+	margin-left: .1em; 
+}
+
+
+
+#messageBoxEReg textarea{
+ height: 350px;
+
+}
+
+
+
+
+#buttonArea2, #buttonAreaEReg{
+	width: 31.5em; 
+	height: 1.5em;
+	margin: 0 auto;
+	margin-top: 7px; 
+	/*border: 1px solid red;*/
+	text-align: center;	 
+	font-size: 70%; 
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	
+}
+
+#buttonArea3 {
+	width: 20.75em; 
+	height: 1.5em;
+	margin: 0 auto;
+	margin-top: 7px; 
+	/*border: 1px solid red;*/
+	text-align: center;	 
+	font-size: 70%; 
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	
+}
+
+	
+.button , .buttonDead {
+	display: block; 
+	float: left; 
+	max-height: 2em;
+	width: 10em;
+	height: 1.15em;
+	margin-left: auto;
+	margin-right: auto; 
+	padding: 1px;
+	font-weight: bold; 
+	border: 1px solid; 
+
+}
+
+
+
+.button {
+	cursor: pointer;
+}
+
+
+.button:hover {
+	color: white; 
+}
+
+.button:hover::selection {
+	color: white; 
+}
+
+.button::selection
+{
+color:#ccc;
+}
+.button::-moz-selection
+{
+color:#ccc;
+}
+
+
+/*#enigmaX {
+	color: #333;
+	background-color: #ccc;
+	border-color: #ccc;
+}*/
+
+
+a {
+	text-decoration: none;
+	
+}
+
+a:link, a:visited {
+	color: white;
+	font-style: italic;
+}      
+
+a:hover, a:active {
+	color:white;
+}  
+
+#aboutDiv, #aboutDiv h3, #eRegDiv, #eRegDiv h3 {
+	width: 650px;
+	
+	margin: 0 auto;
+	
+	color: #ccc;
+	background-color: transparent;
+	font-size: 1em;
+	line-height: 1em;
+	letter-spacing: .1em;
+	resize: none; 
+	overflow:hidden;
+	
+	
+	/*font-family:  "Segoe UI Symbol", symbol;*/
+	text-align:justify;
+}
+
+#aboutDiv h3, #eRegDiv h3 {
+	text-align:center;
+	font-weight: normal;
+	line-height: 1em;
+}
+
+#aboutDiv p {
+	margin-top: 10px; 
+	
+} 
+
+#aboutDiv, #loadDiv, #eRegDiv {
+	display: none;
+}
+	
+#aboutDiv {
+	margin-top: 7px;
+}
+
+.centered {
+	text-align:center;
+}
+
+.huge {
+	font-size: 500%;
+	text-align:center;
+}
+
+
+

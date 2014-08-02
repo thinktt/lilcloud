@@ -1,0 +1,71 @@
+❂☮☠★☢☾☠❉☠♗☾♆♙♆✿☢✿☯❉☮☾☢✂♆✸♆
+✂☠❉♙✸☹❂☏☭☮♠♗☮✈✿✂♖☂♖☾❉✪✈❂♕♬
+❂❉☢☂☮✈☠✿★♆♙♕✂✪☹♬♞☾✸☭♠☯☏♖♗☸
+
+......Message 1.......
+
+You decrypted the message! Well done, you have figured out how to load a key and decrypt a message. You might have noticed that when in the "load key" area if you click "load" the key you pasted in the bottom box will appeared in the top box. This is how you know your key is loaded. 
+
+The top is the key box and always shows your currently loaded key. There is no way to hide this, so beware of people behind you, they can steal your key. When Enigma X starts it makes a new random key. Also clicking "new key" makes a totally new random key, any previously loaded key will be gone unless you've saved it yourself.
+
+Decrypt the next Message 2 for more tips. 
+
+
+........Message 2..........
+
+Enigma X has no native way to save a key to a file. You'll have to use cut and paste. Click any key in the key box and it should automatically select the key. Copy and paste it into a text editor. Save it there. 
+
+Decrtyp Message 3 fro more tips!
+
+.........Message 3..........
+Remember if you share the key the same way you share the message then anyone who can intercept your messages can also read them. For instance if you send you keys by email all your email service provider (and your friend's email serice provider) can read all your secret messages! 
+
+One solution is to use something like onetimesecret.com and use a pass phrase that only your friend will know. 
+
+...........Message 4.........
+
+This box is the message box. There is no scroll functionality in this box, but you can use the arrow keys and the cursor to scroll through long messages. Ctrl-A will allow you to select everything and get it out of this box. Type or paste a message here and then click "encrypt/decrypt", Enigma X will encrypt ASCII messages and try and decrypt Think Ding messages.
+
+...........Message 5........
+You can re-encrypt Think Ding messages by putting them in brackets.[♞♞☮♖☏♠☮☭♠☯✸✸★❉✈☮✪☭♠✿♕✿♕❂☾✈☯❂☭♙☢✈❉✈☯♞❂♕☭☮] 
+
+You can paste a key in an ASCII message and Enigma X will recognize it as a key and encrypt it. 
+☂♙✪☏☯★♬♕♞☮♕☂❉☯☹☂☹☸❂♬✂♖♕☮☹☹
+☹☠♕☸♆✸♬✿★☹♙♠♗★♆✪✸♬✿♗☂✿☂☹✪☮
+☯☹♆✸☂☾♖☠☏♕❉☭✪✈♬☸☮★♠☢♞❂♗♙✿✂
+
+Otherwise if you mix Think Ding and ASCII Enigma X will just reject the message. 
+
+Don't use this for serious encryption. Have fun and good luck! 
+
+
+
+
+************************************
+
+You did it! Here's some tips on using Enigma X. 
+
+The top box is the key box and always shows your currently loaded key. There is no way to hide this, so beware of people behind you, they can steal your key. Clicking "new key" or loading the page creates a new random key. Any previous key is lost unless you save it. There is no native way to do this in Enigma X. To save a key click the key box and copy and paste it into a text editor and save it there. 
+
+Enigma X decrypts Think Ding (the symbols) and encrypts ASCII (regular text). If you enter both Enigma X will not accept it unless you put the Think Ding in brackets like this: 
+
+[♞♞☮♖☏♠☮☭♠☯✸✸★❉✈☮✪☭♠✿♕✿♕❂☾✈☯❂☭♙☢✈❉✈☯♞❂♕☭☮]
+
+Also Enigma X will recognize keys in your message as long as they look like keys.  
+
+☂♙✪☏☯★♬♕♞☮♕☂❉☯☹☂☹☸❂♬✂♖♕☮☹☹
+☹☠♕☸♆✸♬✿★☹♙♠♗★♆✪✸♬✿♗☂✿☂☹✪☮
+☯☹♆✸☂☾♖☠☏♕❉☭✪✈♬☸☮★♠☢♞❂♗♙✿✂
+
+Have fun. Don't use this for serious encryption. Contact me with questions or comments. 
+
+The Key
+❂☮☠★☢☾☠❉☠♗☾♆♙♆✿☢✿☯❉☮☾☢✂♆✸♆
+✂☠❉♙✸☹❂☏☭☮♠♗☮✈✿✂♖☂♖☾❉✪✈❂♕♬
+❂❉☢☂☮✈☠✿★♆♙♕✂✪☹♬♞☾✸☭♠☯☏♖♗☸
+
+enigmaX 
+http://thinktt.github.io/enigmaX/
+
+Try and decrypt it with Enigma X -
+http://thinktt.github.io/enigmaX/
