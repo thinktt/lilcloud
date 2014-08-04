@@ -47,7 +47,8 @@ app.use('/', express.static('enigmaX/'));
 
 //..........Start Server..........................
 app.listen(port, function() {
-  console.log("Listening on " + port);
+  console.log("app is listening on port " + port);
+  console.log('currently running in ' + env); 
 });
 
 
