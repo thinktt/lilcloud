@@ -18,9 +18,9 @@ db.on('error', function () {
 
 
 
-requireHttps = function (req, res, next) {
+httpsRedirect = function (req, res, next) {
 	var host = req.host; 
-	if(!req.secure) {
+	if(env !== 'development' && !req.secure) {
      return res.redirect('https://'+ host);
    }  
    return next();
@@ -32,7 +32,7 @@ requireHttps = function (req, res, next) {
 //.............Express Stack.....................
 
 app.enable('trust proxy'); 
-app.use(requireHttps);
+app.use(httpsRedirect);
 
 app.use(require('express-session')({
     key: 'session',
