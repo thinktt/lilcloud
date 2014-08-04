@@ -4,7 +4,8 @@ var express = require('express'),
     port = Number(process.env.PORT || 3000),
     mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/devdb',
     secret = process.env.SESSION_SECRET || 'non-secret secret for dev only',
-    db, mongoTest, sessionOptions
+    env = process.env.NODE_ENV || 'development',
+    db, mongoTest, sessionOptions, requireHttps
     ; 
 
 
@@ -16,7 +17,22 @@ db.on('error', function () {
 });
 
 
+
+requireHttps = function (req, res, next) {
+	var host = req.host; 
+	if(!req.secure) {
+     return res.redirect('https://'+ host);
+   }  
+   return next();
+};
+
+
+
+
 //.............Express Stack.....................
+
+app.enable('trust proxy'); 
+app.use(requireHttps);
 
 app.use(require('express-session')({
     key: 'session',
