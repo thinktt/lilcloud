@@ -1,0 +1,102 @@
+<div class="container container-pad">
+	<div class="panel panel-default" id="IRPanel"> <!--panel conatainer-->
+
+		<div class="panel-heading" id="IRPanelHeading"> <!--panel heading-->
+			<h4><span class="glyphicon  glyphicon-asterisk"></span>&nbsp Current Open Incidents</h4>
+		</div> <!--panel heading end-->
+
+	 <div class="panel-body" id="IRPanelBody"> <!--panel pody-->
+	 	<h4 ng-show="openIncidents.length==0">There are no open incidents</h4>
+		<div> <!--row1-->
+			<div class="col-lg-12" > <!--column 1-->
+				
+				
+				<div  ng-repeat="incident in openIncidents | orderBy:'timeStamp'"> 
+					<table class="table table-bordered table-condensed">
+						<tbody>
+							<tr> 
+								<td >
+									SW:
+									<span>
+										{{incident.studentWorker}}
+									</span>
+								</td>
+								<td>
+									From:
+									<span>
+										Lab: {{incident.fromLab}} 
+									</span> <br>
+								</td>
+								<td>
+									ID: 
+									<span>
+										{{incident.fullID}}
+									</span>
+								</td>
+								<td>
+									<a href="#/incident">
+										<span 
+											class="glyphicon glyphicon-plus-sign pull-right"
+											ng-click="setFocus(incident)" 
+										></span>
+									</a> 
+							</tr>
+							<tr> 
+								<td>
+									<span> 
+										{{incident.type}} 
+									</span> <br>
+									<span>
+										Lab: {{incident.lab}} 
+									</span> <br>
+									<span>
+										Station: {{incident.station}} 
+									</span>
+									
+								</td>
+								<td>
+									<span>
+										{{incident.date | date:'MMMM dd, yyyy'}} 
+									</span><br>
+									Shift Start: 
+									<span>
+										{{incident.shiftStart | toStandardTime}} 
+									</span><br>
+									Arrival Time:
+									<span>
+										 {{incident.shiftArrive | toStandardTime}}
+									</span>
+								</td>
+								<td>
+									Reason given: </br>
+									<span>
+										{{incident.reason}} 
+									</span> 
+								</td> 
+								<td>
+									Reported by: 
+									<span>
+										{{ incident.reportedBy }}
+									</span></br>
+									Status: 
+									<span>
+										{{incident.status}} 
+									</span><br> 
+									Disiplinary Meeting: 
+									<span>
+											{{incident.meetingDate | date:'MMMM dd, yyyy'}}
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+
+
+
+			</div> <!-- end of column 3-->
+		</div> <!--end of row1-->
+
+	</div> <!--panel body end-->
+</div> <!--internal container end-->
+</div> <!-- /main container end -->

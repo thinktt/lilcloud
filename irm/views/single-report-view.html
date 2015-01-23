@@ -1,0 +1,235 @@
+<div class="container container-pad">
+	<div class="panel panel-default" id="IRPanel"> <!--panel conatainer-->
+
+		<div class="panel-heading" id="IRPanelHeading"> <!--panel heading-->
+			<h4><span class="glyphicon  glyphicon-folder-open"></span>&nbsp View Reports</h4>
+		</div> <!--panel heading end-->
+
+	 <div class="panel-body" id="IRPanelBody"> <!--panel pody-->
+	 	<h4 ng-if="!reportOfFocus">This report does not exist</h4>
+
+		<div ng-if="reportOfFocus"> <!--row1-->
+			<div class="col-lg-12" > <!--column 1-->
+				
+				
+				<div> 
+					<table class="table table-bordered table-condensed">
+						<tbody>
+							<tr> 
+								<td >
+									SW:
+									<span>
+										{{reportOfFocus.name}} &nbsp;ID:{{reportOfFocus.fullID}}
+									</span>
+								</td>
+								<td>
+									<span	class="glyphicon glyphicon-question-sign text-warning"
+									></span> {{reportOfFocus.pending}} &nbsp;&nbsp;
+									<span	class="glyphicon glyphicon-exclamation-sign text-danger"
+									></span> {{reportOfFocus.unexcused}} &nbsp;&nbsp;
+									<span	class="glyphicon glyphicon-ok-sign text-success"
+									></span> {{reportOfFocus.excused}}&nbsp;&nbsp;
+									<br>
+								</td>
+								<td>
+								</td>
+								<td>
+									<a href="#/view">
+										<span 
+											class="glyphicon glyphicon-minus-sign pull-right"
+										></span>
+									</a> 
+							</tr>
+
+						
+						</tbody>
+					</table>
+				</div>
+
+				<div > 
+					<table class="table table-bordered table-condensed" 
+					ng-hide="filteredIncidents.length === 0">
+						<tbody ng-repeat="incident in filteredIncidents = (reportOfFocus.incidents | 
+							filter: {status: 'Pending Review'}) | orderBy:'timeStamp'">
+								<tr class="warning"> 
+									<td>
+										<span> 
+											{{incident.type}} 
+										</span> <br>
+										<span>
+											Lab: {{incident.lab}} 
+										</span> <br>
+										<span>
+											Station: {{incident.station}} 
+										</span>
+										
+									</td>
+									<td>
+										<span>
+											{{incident.date | date:'MMMM dd, yyyy'}} 
+										</span><br>
+										Shift Start: 
+										<span>
+											{{incident.shiftStart | toStandardTime}} 
+										</span><br>
+										Arrival Time:
+										<span>
+											 {{incident.shiftArrive | toStandardTime}}
+										</span>
+									</td>
+									<td>
+										Reason given: <br>
+										<span>
+											{{incident.reason}} 
+										</span> 
+									</td>
+									<td>
+										Reported by: 
+										<span>
+											{{ incident.reportedBy }}
+										</span>
+											<a href="#/incident-in-report">
+											<span 
+												class="glyphicon glyphicon-plus-sign pull-right"
+												ng-click="setFocus(incident)" 
+											></span>
+										</a><br>
+										Status: 
+										<span>
+											{{incident.status}} 
+										</span><br> 
+										Disiplinary Meeting: 
+										<span>
+												{{incident.meetingDate | date:'MMMM dd, yyyy'}}
+										</span>
+									</td>
+								</tr>
+						</tbody>
+					</table>
+					<table class="table table-bordered table-condensed"
+					ng-hide="filteredIncidents.length === 0">
+						<tbody ng-repeat="incident in filteredIncidents = (reportOfFocus.incidents | 
+							filter: {status: 'Unexcused'}) | orderBy:'timeStamp'">
+								<tr class="danger"> 
+									<td>
+										<span> 
+											{{incident.type}} 
+										</span> <br>
+										<span>
+											Lab: {{incident.lab}} 
+										</span> <br>
+										<span>
+											Station: {{incident.station}} 
+										</span>
+										
+									</td>
+									<td>
+										<span>
+											{{incident.date | date:'MMMM dd, yyyy'}} 
+										</span><br>
+										Shift Start: 
+										<span>
+											{{incident.shiftStart | toStandardTime}} 
+										</span><br>
+										Arrival Time:
+										<span>
+											 {{incident.shiftArrive | toStandardTime}}
+										</span>
+									</td>
+									<td>
+										Reason given: <br>
+										<span>
+											{{incident.reason}} 
+										</span> 
+									</td>
+									<td>
+										Reported by: 
+										<span>
+											{{ incident.reportedBy }}
+										</span>
+											<a href="#/incident-in-report">
+											<span 
+												class="glyphicon glyphicon-plus-sign pull-right"
+												ng-click="setFocus(incident)" 
+											></span>
+										</a><br>
+										Status: 
+										<span>
+											{{incident.status}} 
+										</span><br> 
+										Disiplinary Meeting: 
+										<span>
+												{{incident.meetingDate | date:'MMMM dd, yyyy'}}
+										</span>
+									</td>
+								</tr>
+						</tbody>
+					</table>
+					<table class="table table-bordered table-condensed">
+						<tbody ng-repeat="incident in reportOfFocus.incidents | 
+							orderBy:'timeStamp' | filter: {status: 'Excused'} : true">
+								<tr class="success"> 
+									<td>
+										<span> 
+											{{incident.type}} 
+										</span> <br>
+										<span>
+											Lab: {{incident.lab}} 
+										</span> <br>
+										<span>
+											Station: {{incident.station}} 
+										</span>
+										
+									</td>
+									<td>
+										<span>
+											{{incident.date | date:'MMMM dd, yyyy'}} 
+										</span><br>
+										Shift Start: 
+										<span>
+											{{incident.shiftStart | toStandardTime}} 
+										</span><br>
+										Arrival Time:
+										<span>
+											 {{incident.shiftArrive | toStandardTime}}
+										</span>
+									</td>
+									<td>
+										Reason given: <br>
+										<span>
+											{{incident.reason}} 
+										</span> 
+									</td>
+									<td>
+										Reported by: 
+										<span>
+											{{ incident.reportedBy }}
+										</span>
+											<a href="#/incident-in-report">
+											<span 
+												class="glyphicon glyphicon-plus-sign pull-right"
+												ng-click="setFocus(incident)" 
+											></span>
+										</a><br>
+										Status: 
+										<span>
+											{{incident.status}} 
+										</span><br> 
+										Disiplinary Meeting: 
+										<span>
+												{{incident.meetingDate | date:'MMMM dd, yyyy'}}
+										</span>
+									</td>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+
+			</div> <!-- end of column 3-->
+		</div> <!--end of row1-->
+
+	</div> <!--panel body end-->
+</div> <!--internal container end-->
+</div> <!-- /main container end -->

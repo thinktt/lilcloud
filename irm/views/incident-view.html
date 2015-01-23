@@ -1,0 +1,232 @@
+<div class="container container-pad">
+	<div class="panel panel-default" id="IRPanel"> <!--panel conatainer-->
+
+		<div class="panel-heading" id="IRPanelHeading"> <!--panel heading-->
+			<h4><span class="glyphicon  glyphicon-asterisk"></span>&nbsp Current Open Incidents</h4>
+		</div> <!--panel heading end-->
+
+	 <div class="panel-body" id="IRPanelBody"> <!--panel pody-->
+	 	<h4 ng-if="incident.isDeleted">This Incident has been deleted</h4>
+		<div ng-if="!incident.isDeleted"> <!--row1-->
+			<div class="col-lg-12" > <!--column 1-->
+				<form editable-form name="ei"> 
+					<table class="table table-bordered table-condensed">
+						<tbody>
+							<tr> 
+								<td >
+									SW:
+									<span editable-text="incident.studentWorker">
+										{{incident.studentWorker}}
+									</span>
+								</td>
+								<td>
+									From:
+									<span editable-select="incident.fromLab"
+										e-ng-options="lab.name as lab.name for lab in labs"
+										onaftersave="updateFullID()">
+										Lab: {{incident.fromLab}} 
+									</span> <br>
+								</td>
+								<td>
+									ID: 
+									<span editable-text="incident.schedulerID">
+										{{incident.fullID}}
+									</span>
+								</td>
+								<td>
+									<span
+										class="glyphicon glyphicon-share"
+										ng-click="submitIncident(incident)" 
+										ng-hide="ei.$visible"
+									>submit</span> &nbsp;								
+									<span 
+										class="glyphicon glyphicon-edit"
+										ng-click="ei.$show()" 
+										ng-hide="ei.$visible"
+									>edit</span>  
+									<a href="#/open">
+										<span
+											class="glyphicon glyphicon-minus-sign pull-right"
+											ng-click="ei.$show()" 
+											ng-hide="ei.$visible"
+										></span>
+									</a>
+									<span
+										ng-show="ei.$visible"
+										ng-disabled="ei.$waiting" 
+										ng-click="ei.$submit()"
+										class="glyphicon glyphicon-ok pull-right" 
+									>save</span> 
+									<span 
+										ng-show="ei.$visible"
+										ng-disabled="ei.$waiting"
+										ng-click="ei.$cancel()"
+										class="glyphicon glyphicon-remove pull-right" 
+									>cancel &nbsp;</span> 
+									<span 
+										ng-show="ei.$visible"
+										ng-disabled="ei.$waiting"
+										ng-click="deleteIncident(incident)"
+										class="glyphicon glyphicon-trash pull-right" 
+									>&nbsp;</span> 
+								</td>
+							
+							</tr>
+							<tr> 
+								<td>
+									<span editable-select="incident.type"
+										e-ng-options="type for type in incedentTypes"> 
+										{{incident.type}} 
+									</span> <br>
+									<span editable-select="incident.lab"
+										e-ng-options="lab.name as lab.name for lab in labs"
+										e-ng-change="updateLabStations(this.$data); stationSelecter.$data = labStations[0];">
+										Lab: {{incident.lab}} 
+									</span> <br>
+									<span editable-select="incident.station"
+										e-ng-options="station for station in labStations"  
+										e-ng-init="registerStationSelecter(this); updateLabStations(incident.lab)">
+										Station: {{incident.station}} 
+									</span>
+									
+								</td>
+								<td>
+									<span editable-date="incident.date"
+										onaftersave="incident.timeStamp = makeTimeStamp(incident.date, incident.shiftStart)">
+										{{incident.date | date:'MMMM dd, yyyy'}} 
+									</span><br>
+									Shift Start: 
+									<span editable-time="incident.shiftStart">
+										{{incident.shiftStart | toStandardTime}} 
+									</span><br>
+									Arrival Time:
+									<span editable-time="incident.shiftArrive">
+										 {{incident.shiftArrive | toStandardTime}}
+									</span>
+								</td>
+								<td>
+									Reason given: </br>
+									<span editable-textarea="incident.reason" e-rows="3" e-cols="40">
+										{{incident.reason}} 
+									</span> 
+								</td> 
+								<td>
+									Reported by: 
+									<span editable-select="incident.reportedBy" 
+										e-ng-options="leader.name as leader.name for leader in leaders">
+										{{ incident.reportedBy }}
+									</span></br>
+									Status: 
+									<span editable-select="incident.status"
+										e-ng-options="status for status in incidentStatusTypes">
+										{{incident.status}} 
+									</span><br> 
+									Disciplinary Meeting: 
+									<span editable-date="incident.meetingDate"
+										ng-init="registerMeetingSelecter(this)"
+										onaftersave="setMeetingPending()">
+											{{incident.meetingDate | date:'MMMM dd, yyyy'}}
+									</span>
+									<span 
+										ng-show="ei.$visible"
+										ng-disabled="ei.$waiting"
+										ng-click="clearMeetingSelecter()"
+										class="glyphicon glyphicon-remove"> 
+									</span> 
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</form>
+
+					<form editable-form name="ec" 
+						ng-repeat="comment in incident.comments | orderBy:'timeStamp'"
+						onaftersave="clearNewStatus($index);" 
+						oncancel="checkForNew($index)">   
+						<div ng-if="comment.new" ng-init="ec.$show()" ></div>
+						<table class="table table-bordered table-condensed">
+							<tr>
+								<td  colspan="3">
+									Subject:
+									<span editable-text="comment.subject"
+										e-size="60" 
+										e-tabindex=1>
+										{{comment.subject}}
+									</span>
+								</td>
+								<td>
+									by: 
+									<span editable-select="comment.by" 
+										e-ng-options="leader.name as leader.name for leader in leaders">
+										{{ comment.by }}
+									</span>
+								</td>
+								<td>
+									<span editable-date="comment.date"
+										onaftersave="comment.timeStamp = makeTimeStamp(comment.date, comment.time)">       
+										{{comment.date | date: 'MM-dd-yyyy'}}
+									</span>
+									<span editable-time="comment.time"  e-minute-step="10">                
+										{{comment.time | toStandardTime}} 
+									</span>
+
+									<span 
+										class="glyphicon glyphicon-edit pull-right"
+										ng-click="ec.$show()" 
+										ng-hide="ec.$visible"
+									></span> 
+									<span
+										ng-show="ec.$visible"
+										ng-disabled="ec.$waiting" 
+										ng-click="ec.$submit()"
+										class="glyphicon glyphicon-ok pull-right" 
+									>save</span> 
+									<span 
+										ng-show="ec.$visible"
+										ng-disabled="ec.$waiting"
+										ng-click="ec.$cancel()"
+										class="glyphicon glyphicon-remove pull-right" 
+									>cancel &nbsp;</span> 
+									<span 
+										ng-show="ec.$visible"
+										ng-disabled="ec.$waiting"
+										ng-click="deleteComment($index)"
+										class="glyphicon glyphicon-trash pull-right" 
+									>&nbsp;</span> 
+								</td>
+							</tr>
+							<tr>
+								<td  colspan="5">
+									<span editable-textarea="comment.body"  
+										e-rows="7" 
+										e-cols="250"
+										e-tabindex=2>
+										<pre>{{comment.body}}</pre>
+									</span>
+								</td>
+							</tr>
+						</table>
+				</form>
+
+				<div>
+					<table class="table table-bordered table-condensed">
+						<tr>
+							<td>
+							<span 
+								ng-click="addComment()"
+								class="glyphicon glyphicon-plus pull-right"> 
+							</span> 
+							<span class="pull-right">
+								New Comment &nbsp;
+							</span> 
+							</td>
+						</tr>
+					</table>
+				</div>
+
+			</div> <!-- end of column 3-->
+		</div> <!--end of row1-->
+
+	</div> <!--panel body end-->
+</div> <!--internal container end-->
+</div> <!-- /main container end -->

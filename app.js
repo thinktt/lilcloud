@@ -42,7 +42,7 @@ app.use(require('express-session')({
   	resave: true
 }));
 
-app.use('/', express.static('enigmaX/'));
+app.use('/', express.static('irm/'));
 
 
 //..........Start Server..........................

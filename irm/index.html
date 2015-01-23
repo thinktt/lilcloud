@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app='app'>
+
+<head>
+	<title>Incident Report Manager</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/ico" href="favicons/irm.ico">
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="sandbox.css" rel="stylesheet" media="screen">
+	<link href="css/xeditable.css" rel="stylesheet">
+	<script src="js/angular.js"></script>	
+	<!-- <script src="js/autofill-event.js"></script> -->
+	<script src="js/angular-route.js"></script>
+	<script src="js/ngStorage.js"></script>
+	<script src="js/ui-bootstrap.js"></script>
+	<script src="js/xeditable.min.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="socket.io/socket.io.js"></script>
+	<script src="incident.js"> </script>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default " role="navigation" ng-controller="NavCtrl">
+ 	<div class="row" ng-show="!user.isLeader || !user.isSuper">
+    <div class="col-lg-3 col-centered">
+    	<span class="navbar-brand center">
+    		<strong>OAL</strong> Incident Report Manager
+    	</span>
+    </div>
+    </div>
+
+	<div class="row" ng-show="user.isLeader || user.isSuper"> <!--navbar row-->
+		<div class="col-lg-1"></div>
+		<div class="col-lg-11">
+			<div class="navbar-header" ng-class="">
+				<a class="navbar-brand" href="#"><strong>OAL</strong> Incident Report Manager</a>
+			</div> 
+			<ul class="nav navbar-nav ">
+				<li ng-class="{ active: isActive('/report')}" 
+					ng-show="user.isLeader || user.isSuper">
+						<a href="#/report">
+							<span class="glyphicon glyphicon-edit"></span> 
+							&nbsp; Report Incident
+				</a></li>
+				<li ng-class="{ active: isActive('/open') || isActive('/incident')}" 
+					ng-show="user.isLeader || user.isSuper">
+						<a href="#/open">
+							<span class="glyphicon glyphicon-asterisk"></span>
+							&nbsp; Current Open Incidents
+				</a></li>
+				<li ng-class="{ active: isActive('/view') || isActive('/single-report') || isActive('/incident-in-report')}"
+					ng-show="user.isSuper">
+						<a href="#/view">
+						<span class="glyphicon glyphicon-folder-open"></span> 
+						&nbsp; View Reports
+				</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="" ng-click="singOut()">
+					<span class="glyphicon glyphicon-log-out"></span>
+					&nbsp;Sign Out &nbsp;&nbsp;&nbsp;&nbsp;
+				</a></li>
+			</ul>
+		</div> <!--column 1-->
+	</div> <!--navbar row end-->
+	<!--/div--> <!--nav content end-->
+</nav>
+
+
+<div ng-view></div>
+
+
+</body>
+
+
+
+</html>

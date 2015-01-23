@@ -1,0 +1,44 @@
+<div class="container">
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            	<h2><span class="glyphicon glyphicon-log-in"></span>&nbsp; Sign in</h2>
+            </div>
+            <div class="panel-body in" id="panel-looking-info">
+	            <form class="form" name="signInForm" ng-submit=submit($event) novalidate>
+								Username<br/>
+		            <div class="control-group" 
+		            	ng-class="{'has-error': invalidSubmit && signInForm.username.$invalid}">
+										<input type="text" 
+											name="username" 
+											ng-model="username" 
+											class="form-control"
+										required>
+								</div>
+								Password <br/>
+								<div class="control-group" 
+		            	ng-class="{'has-error': invalidSubmit && signInForm.password.$invalid}">
+										<input type="password"
+											id="password" 
+											name="password" 
+											ng-model="password"
+											class="form-control"
+											autofill
+										required>
+										<br/>
+								</div>
+								<button class="btn btn-lg btn-custom-lighten" id="submit" type="submit" value="Submit">
+									Sign in
+								</button>
+							</form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="float:left;">
+
+</div>
+</div> 

@@ -1,0 +1,175 @@
+
+<div class="container container-pad"> <!--conatainer-pad-->
+	<div class="panel panel-default" id="IRPanel"> <!--panel conatainer-->
+			<div class="panel-heading" id="IRPanelHeading"> <!--panel heading-->
+				<h4><span class="glyphicon glyphicon-edit"></span>&nbsp; Report Incident</h4>
+			</div> <!--panel heading end-->
+			<div class="panel-body" id="IRPanelBody"> <!--panel pody-->
+				<form class="form" name="newIncidentForm" novalidate>
+				
+					<div class="col-lg-3"> <!--column 1-->
+						 Person reporting <br/>
+						 <select name="reportedBy" 
+							ng-model="incident.reportedBy" 
+							class="form-control"
+							ng-options="leader.name as leader.name for leader in leaders">
+						 </select> <br/> 
+
+						Student worker's lab <br/>
+						<select name="fromLab"
+							ng-model="incident.fromLab" 
+							class="select-block form-control"
+							ng-options='lab.name as lab.name for lab in fromLabs'>
+						</select> <br/> 
+
+						<div class="control-group"
+							ng-class="{'has-error': invalidSubmit && newIncidentForm.schedulerID.$invalid}">
+								Student worker's scheduler ID <br/>
+								<input type="text" 
+									name="schedulerID" 
+									ng-model="incident.schedulerID" 
+									class="form-control"
+									ng-change='findName(incident.schedulerID)'
+									required>
+								<br/> 
+						</div>
+
+						<div class="control-group"
+							ng-class="{'has-error': invalidSubmit && newIncidentForm.studentWorker.$invalid}">
+								Student worker's name <br/>
+								<input type="text" 
+									name="studentWorker" 
+									ng-model="incident.studentWorker" 
+									class="form-control"
+									required>
+								<br/>
+						</div>
+
+						Date of incident <br/>
+						<input name="date" type="date" ng-model="incident.date" class="form-control" id="myDate"><br/> 
+					 
+						 Incident Lab <br/>
+						 <select name="incidentLab" 
+							ng-model="incident.lab" 
+							class="select-block form-control"
+							ng-options="lab.name as lab.name for lab in labs"
+							ng-change="updateLabStations(incident.lab)">    
+						 </select> <br/> 
+					</div> <!--end of column 1-->
+				 
+				 <div  class="col-lg-3">  <!--column 2-->
+
+					 Station <br/>
+					 <select name="station" 
+						ng-model="incident.station" 
+						class="select-block form-control"
+						ng-options="station for station in labStations">
+					 </select> <br/> 
+
+					 Shift start time <br/>
+					 <input name="shiftStartTime" 
+						type="time" 
+						ng-model="incident.shiftStart" 
+						class="form-control"> 
+					 <br/> 
+					
+					 Student worker has<br/>
+					 <input type="radio" 
+						name="status" 
+						ng-model="incident.arrivalStatus" 
+						value="pending"> 
+						not arrived yet <br/>
+					 <input type="radio" 
+						name="status" 
+						ng-model="incident.arrivalStatus" 
+						value="missed"> 
+						missed entire shift or is not comming <br/>
+					 <input type="radio" 
+						name="status" 
+						ng-model="incident.arrivalStatus" 
+						value="late"> 
+					 arived late <br/><br/>
+					 
+					 <div ng-if="incident.arrivalStatus === 'late'">
+						Arrival time: <br/>
+						<input name="arrivalTime" type="time" ng-model="incident.shiftArrive"  class="form-control" id="myTime"> <br/> 
+					 </div>
+					
+					 Incident type <br/>
+					 <select name="type" 
+						ng-model="incident.type" 
+						class="form-control"
+						ng-options="type.value as type.label for type in incedentTypes">
+					 </select> <br/> 
+					
+					 Called: 
+					 <input type="radio" name="called" ng-model="incident.called" value="no" checked>no 
+					 <input type="radio" name="called" ng-model="incident.called" value="yes">yes <br/>
+				 </div> <!-- end of column 2 -->
+
+				<div  class="col-lg-6">  <!-- column 3-->
+					Reason given for incident <br/>
+					<input type="text" 
+						name="reason" 
+						placeholder="none" 
+						size="45" ng-model="incident.reason" 
+						class="form-control">
+					<br/>
+					
+					<div class="control-group"
+						ng-class="{'has-error': invalidSubmit && newIncidentForm.comment.$invalid}">
+						Comments about incident <br/> 
+						<textarea rows="10" 
+							cols="47" 
+							name="comment" 
+							ng-model="incident.comments[0].body" 
+							class="form-control"
+							required> 
+						</textarea> <br/>
+					</div>
+					<div>
+						<div>
+							<button class="btn btn-large btn-custom-lighten" type="submit" ng-click="submit()">Open</button>
+							<span class="pull-right">
+								<input type="checkbox" ng-model="parseBoxOn"> Use Parser
+							</span>
+							<br/><br/>
+							<div ng-show="invalidSubmit" 
+								class="alert alert-danger col-lg-10">
+									Please make sure required fields are filled in correctly
+							</div>
+							<div ng-show="validSubmit" 
+								class="alert alert-success col-lg-10">
+									Incident has been opened 
+							</div>
+							<div ng-show="invalidParse" 
+							class="alert alert-danger col-lg-10">
+							Failed to parse text
+							</div>
+							<div ng-show="validParse" 
+								class="alert alert-success col-lg-10">
+							Text Parsed 
+							</div>
+						</div>
+					<div class="control-group" ng-show="parseBoxOn">
+						<label for="textToParse">Email to parse <br/> </label>
+						<textarea rows="10" 
+							cols="47" 
+							name="parseBox" 
+							ng-model="textToParse"
+							class="form-control"
+							id="textToParse"> 
+						</textarea> <br/>
+						<div>
+							<button class="btn btn-large btn-custom-lighten"  ng-click="parseText(textToParse)">Parse
+							</button>
+						</div>
+					</div>
+				</div>
+				</div> <!--end of column 3 -->
+						
+			</form>
+		</div>
+	</div>
+</div>
+
